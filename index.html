@@ -55,7 +55,7 @@ RESUMO DA REVISÃO CIRÚRGICA (Oliver → Claude)
   body{
     font-family:var(--sans);
     color:var(--ink);
-    background:var(--cream);
+    background:#FFFFFF;
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
@@ -99,6 +99,38 @@ RESUMO DA REVISÃO CIRÚRGICA (Oliver → Claude)
   .section-pad{padding:96px 0;}
   @media (max-width:640px){ .section-pad{padding:64px 0;} }
   .bg-alt{background:#FFFFFF;}
+  .bg-cream{background:var(--cream);}
+  .bg-navy{background:var(--navy);}
+  .bg-navy .section-title, .bg-navy h2{color:var(--cream);}
+  .bg-navy p{color:#B7BCC8;}
+  .bg-navy .eyebrow{color:var(--gold-soft);}
+
+  /* -------- Textura pontilhada (só sobre branco) -------- */
+  .bg-dotted{
+    background-image:radial-gradient(rgba(15,27,46,0.12) 1px, transparent 1.4px);
+    background-size:22px 22px;
+    background-position:-4px -4px;
+  }
+
+  /* -------- Badge pílula -------- */
+  .badge-pill{
+    display:inline-block;
+    padding:7px 18px;
+    border:1px solid rgba(176,139,79,0.4);
+    border-radius:999px;
+    font-family:var(--sans);
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+    background:rgba(176,139,79,0.06);
+  }
+  .bg-navy .badge-pill{
+    color:var(--gold-soft);
+    border-color:rgba(201,168,118,0.4);
+    background:rgba(201,168,118,0.08);
+  }
 
   .divider{height:1px;background:var(--line);}
 
@@ -235,6 +267,53 @@ RESUMO DA REVISÃO CIRÚRGICA (Oliver → Claude)
     font-style:italic;
     border-left:2px solid var(--gold);
     padding-left:14px;
+  }
+  .bg-navy .note-line{color:#AEB4C4;border-left-color:var(--gold-soft);}
+
+  /* -------- AUTODIAGNÓSTICO -------- */
+  .diag-intro-note{font-size:13px;color:var(--gray-light);font-style:italic;margin-top:6px;max-width:560px;}
+  .diag-card{
+    max-width:640px;margin:32px auto 0;
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:36px 32px;background:#fff;
+    box-shadow:0 2px 14px rgba(11,31,58,0.06);
+  }
+  @media (max-width:640px){ .diag-card{padding:26px 20px;} }
+  .diag-progress-bar{height:4px;background:var(--line);border-radius:2px;overflow:hidden;margin-bottom:10px;}
+  .diag-progress-fill{height:100%;background:var(--gold);width:16.66%;transition:width .3s ease;}
+  .diag-progress-label{font-family:var(--sans);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-light);margin-bottom:26px;}
+  .diag-q-title{font-family:var(--serif);font-size:22px;color:var(--navy);margin-bottom:22px;line-height:1.3;}
+  .diag-options{display:flex;flex-direction:column;gap:10px;}
+  .diag-option{
+    text-align:left;padding:14px 18px;border:1.3px solid var(--line);border-radius:var(--radius);
+    background:#fff;font-family:var(--sans);font-size:15px;color:var(--ink);cursor:pointer;
+    transition:border-color .18s ease, background .18s ease, transform .18s ease;
+    min-height:44px;
+  }
+  .diag-option:hover{border-color:var(--gold);background:#FBF1DE;transform:translateY(-1px);}
+
+  .diag-result{display:none;background:var(--navy);border-radius:4px;padding:44px 30px;margin-top:8px;}
+  .diag-result.active{display:block;}
+  .diag-result .rc-label{color:var(--gold-soft);}
+  .diag-interpretation{font-family:var(--serif);font-size:17px;color:#D7DAE2;text-align:center;max-width:480px;margin:26px auto 0;line-height:1.55;}
+  .diag-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:600px;margin:30px auto 0;}
+  @media (max-width:640px){ .diag-cards{grid-template-columns:1fr;} }
+  .diag-card-item{background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,118,0.25);border-radius:4px;padding:16px 18px;}
+  .diag-card-item h4{font-family:var(--sans);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:8px;}
+  .diag-card-item p{font-family:var(--serif);font-size:15.5px;color:var(--cream);line-height:1.4;margin:0;}
+  .diag-gate{max-width:420px;margin:34px auto 0;text-align:center;border-top:1px solid rgba(201,168,118,0.25);padding-top:26px;}
+  .diag-gate p{color:#B7BCC8;font-size:14px;margin-bottom:14px;}
+  .diag-gate-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+  .diag-gate input{flex:1;min-width:180px;padding:12px 14px;border:1px solid rgba(201,168,118,0.35);border-radius:var(--radius);background:rgba(255,255,255,0.06);color:var(--cream);font-family:var(--sans);font-size:14px;min-height:44px;}
+  .diag-gate input::placeholder{color:#8A8F9C;}
+  .diag-gate button{padding:12px 22px;background:var(--gold);color:var(--navy-deep);border-radius:var(--radius);font-weight:600;font-size:14px;white-space:nowrap;min-height:44px;cursor:pointer;}
+  .diag-gate button:hover{background:var(--gold-soft);}
+  .diag-gate-sent{color:var(--gold-soft);font-size:14px;margin-top:14px;display:none;}
+  .diag-restart{margin-top:20px;text-align:center;}
+  .diag-restart button{background:none;border:1px solid rgba(246,242,233,0.3);color:#B7BCC8;font-size:12.5px;padding:8px 16px;border-radius:var(--radius);cursor:pointer;min-height:36px;}
+  .diag-restart button:hover{border-color:var(--gold-soft);color:var(--cream);}
+  @media (prefers-reduced-motion: reduce){
+    .diag-progress-fill, .diag-option{transition:none;}
   }
 
   /* -------- PROGRAMA / DESTAQUE -------- */
@@ -428,6 +507,65 @@ RESUMO DA REVISÃO CIRÚRGICA (Oliver → Claude)
     box-shadow:0 6px 14px rgba(176,139,79,0.18);
   }
   .tag:hover::before{transform:scale(1.35);}
+
+  /* Variante das tags sobre fundo navy */
+  .bg-navy .tag{
+    border-color:rgba(201,168,118,0.55);
+    color:var(--cream);
+    background:rgba(255,255,255,0.04);
+  }
+  .bg-navy .tag:hover{
+    background:rgba(201,168,118,0.14);
+    border-color:var(--gold-soft);
+  }
+
+  /* -------- Círculo central (gramática visual, uso 1 e 2 apenas) -------- */
+  .reveal-circle-wrap{
+    display:flex;
+    justify-content:center;
+    margin:36px 0 8px;
+  }
+  .reveal-circle{
+    width:172px;height:172px;
+    border-radius:50%;
+    border:1.5px solid rgba(201,168,118,0.55);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:18px;
+    position:relative;
+    animation:pulse-op 3.2s ease-in-out infinite;
+  }
+  .reveal-circle::before{
+    content:"";
+    position:absolute;
+    inset:-14px;
+    border-radius:50%;
+    border:1px solid rgba(201,168,118,0.22);
+  }
+  .reveal-circle .rc-label{
+    font-family:var(--sans);
+    font-size:10.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    margin-bottom:6px;
+  }
+  .reveal-circle .rc-value{
+    font-family:var(--serif);
+    font-size:19px;
+    line-height:1.2;
+    color:var(--cream);
+  }
+  @keyframes pulse-op{
+    0%,100%{opacity:0.85;}
+    50%{opacity:1;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal-circle{animation:none;}
+  }
   .callout-strip{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -445,6 +583,8 @@ RESUMO DA REVISÃO CIRÚRGICA (Oliver → Claude)
     font-size:15.5px;
     line-height:1.5;
   }
+  .bg-navy .callout-strip{background:rgba(201,168,118,0.25);border-color:rgba(201,168,118,0.25);}
+  .bg-navy .callout-strip div{background:var(--navy-soft);color:var(--cream);}
 
   /* -------- COMO FUNCIONA steps -------- */
   .steps{
@@ -774,7 +914,7 @@ RESUMO DA REVISÃO CIRÚRGICA (Oliver → Claude)
 </section>
 
 <!-- PROBLEMA -->
-<section class="section-pad">
+<section class="section-pad bg-dotted">
   <div class="wrap">
     <span class="eyebrow">O PONTO DE PARTIDA</span>
     <h2 class="section-title" style="margin-top:14px;">Quando a empresa cresce, a complexidade cresce junto</h2>
@@ -810,8 +950,64 @@ RESUMO DA REVISÃO CIRÚRGICA (Oliver → Claude)
 
 <div class="divider"></div>
 
+<!-- AUTODIAGNÓSTICO -->
+<section class="section-pad" id="autodiagnostico">
+  <div class="wrap" style="text-align:center;">
+    <span class="eyebrow badge-pill">LEITURA INICIAL</span>
+    <h2 class="section-title" style="margin-top:14px;">Leitura Rápida da sua Empresa</h2>
+    <p class="section-lead" style="max-width:520px;margin-left:auto;margin-right:auto;">Identifique sinais de dependência, dispersão e necessidade de estruturação em poucos minutos.</p>
+    <p class="diag-intro-note" style="margin-left:auto;margin-right:auto;">Esta leitura inicial não substitui o diagnóstico realizado dentro do Programa IGED™.</p>
+
+    <div class="diag-card" id="diagCard">
+
+      <!-- Estado de perguntas -->
+      <div id="diagQuizState">
+        <div class="diag-progress-bar"><div class="diag-progress-fill" id="diagProgressFill"></div></div>
+        <p class="diag-progress-label" id="diagProgressLabel">Pergunta 1 de 6</p>
+        <p class="diag-q-title" id="diagQTitle"></p>
+        <div class="diag-options" id="diagOptions"></div>
+      </div>
+
+      <!-- Estado de resultado -->
+      <div class="diag-result" id="diagResultState">
+        <div class="reveal-circle-wrap">
+          <div class="reveal-circle">
+            <span class="rc-label">Resultado</span>
+            <span class="rc-value" id="diagBandName">—</span>
+          </div>
+        </div>
+        <p class="diag-interpretation" id="diagInterpretation"></p>
+        <div class="diag-cards">
+          <div class="diag-card-item"><h4>Sinal predominante</h4><p id="diagSignal"></p></div>
+          <div class="diag-card-item"><h4>Prioridade</h4><p id="diagPriority"></p></div>
+          <div class="diag-card-item"><h4>Risco</h4><p id="diagRisk"></p></div>
+          <div class="diag-card-item"><h4>Próximo movimento</h4><p id="diagNext"></p></div>
+        </div>
+
+        <div class="diag-gate" id="diagGate">
+          <p>Quer uma leitura mais completa para o seu caso?</p>
+          <form id="diagGateForm">
+            <div class="diag-gate-row">
+              <input type="tel" id="diagWhatsapp" placeholder="Seu WhatsApp" required aria-label="Seu WhatsApp">
+              <button type="submit">Quero a leitura completa</button>
+            </div>
+          </form>
+          <p class="diag-gate-sent" id="diagGateSent">Recebido — vamos entrar em contato pelo WhatsApp informado.</p>
+        </div>
+
+        <div class="diag-restart">
+          <button type="button" id="diagRestartBtn">Refazer leitura</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- PROGRAMA -->
-<section class="section-pad bg-alt" id="programa">
+<section class="section-pad" id="programa">
   <div class="wrap split">
     <div>
       <span class="eyebrow">O PROGRAMA</span>
@@ -862,7 +1058,7 @@ RESUMO DA REVISÃO CIRÚRGICA (Oliver → Claude)
 </section>
 
 <!-- CICLO -->
-<section class="section-pad bg-alt">
+<section class="section-pad">
   <div class="wrap">
     <span class="eyebrow">NÃO É UMA SEQUÊNCIA DE REUNIÕES</span>
     <h2 class="section-title" style="margin-top:14px;">Cada encontro faz parte de um ciclo de transformação</h2>
@@ -904,11 +1100,17 @@ RESUMO DA REVISÃO CIRÚRGICA (Oliver → Claude)
 <div class="divider"></div>
 
 <!-- COMPONENTES -->
-<section class="section-pad bg-alt">
+<section class="section-pad bg-navy">
   <div class="wrap">
-    <span class="eyebrow">OUTPUTS DO PROGRAMA</span>
+    <span class="eyebrow badge-pill">OUTPUTS DO PROGRAMA</span>
     <h2 class="section-title" style="margin-top:14px;">Nem todo documento precisa existir desde o início</h2>
     <p class="section-lead">Durante o programa, a realidade da empresa pode revelar a necessidade de novos ativos de gestão e capital intelectual.</p>
+    <div class="reveal-circle-wrap">
+      <div class="reveal-circle">
+        <span class="rc-label">O diagnóstico</span>
+        <span class="rc-value">revela</span>
+      </div>
+    </div>
     <div class="tag-cloud">
       <span class="tag">Documento Fundador</span>
       <span class="tag">Arquitetura Organizacional</span>
@@ -929,6 +1131,7 @@ RESUMO DA REVISÃO CIRÚRGICA (Oliver → Claude)
       <div>O programa não é um pacote fechado de documentos.</div>
     </div>
     <p class="note-line" style="margin-top:24px;">A arquitetura atual denomina esses elementos como Componentes IGED™ — Potencialmente Destacáveis: podem surgir no programa quando houver necessidade, prioridade e capacidade no ciclo, mas também podem ser contratados autonomamente.</p>
+    <p class="note-line" style="margin-top:14px;">As necessidades são reveladas ao longo do programa. Nem toda empresa precisa dos mesmos ativos, nem na mesma profundidade.</p>
   </div>
 </section>
 
@@ -967,7 +1170,7 @@ RESUMO DA REVISÃO CIRÚRGICA (Oliver → Claude)
 <div class="divider"></div>
 
 <!-- PARA QUEM -->
-<section class="section-pad bg-alt">
+<section class="section-pad">
   <div class="wrap">
     <span class="eyebrow">PARA QUEM É</span>
     <h2 class="section-title" style="margin-top:14px;">Para empresas que precisam transformar crescimento em estrutura</h2>
@@ -986,7 +1189,7 @@ RESUMO DA REVISÃO CIRÚRGICA (Oliver → Claude)
 <div class="divider"></div>
 
 <!-- QUEM CONDUZ -->
-<section class="section-pad">
+<section class="section-pad bg-cream">
   <div class="wrap conduz">
     <div>
       <div class="conduz-photo-wrap">
@@ -1008,7 +1211,7 @@ RESUMO DA REVISÃO CIRÚRGICA (Oliver → Claude)
 <div class="divider"></div>
 
 <!-- FRONTEIRAS -->
-<section class="section-pad bg-alt">
+<section class="section-pad bg-cream">
   <div class="wrap">
     <span class="eyebrow">LIMITES CLAROS</span>
     <h2 class="section-title" style="margin-top:14px;">O que o programa não é</h2>
@@ -1054,7 +1257,7 @@ RESUMO DA REVISÃO CIRÚRGICA (Oliver → Claude)
 <div class="divider"></div>
 
 <!-- INVESTIMENTO -->
-<section class="section-pad bg-alt">
+<section class="section-pad">
   <div class="wrap">
     <div class="invest-box">
       <span class="eyebrow" style="color:var(--gold-soft);">INVESTIMENTO</span>
@@ -1180,6 +1383,145 @@ RESUMO DA REVISÃO CIRÚRGICA (Oliver → Claude)
       window.open(url, '_blank');
     });
   }
+</script>
+
+<script>
+  // -------- Autodiagnóstico Interativo --------
+  (function(){
+    var questions = [
+      { cat:'decisoes', label:'Decisões concentradas em poucas pessoas',
+        text:'Quantas decisões importantes da empresa passam só por você (ou por poucas pessoas)?',
+        opts:['Quase nenhuma — o time decide com autonomia','Algumas, mas o time resolve o resto','A maioria passa por mim','Praticamente todas dependem de mim'] },
+      { cat:'processos', label:'Processos pouco formalizados',
+        text:'Seus processos estão documentados, ou só na cabeça da equipe?',
+        opts:['Documentados e formalizados','Parcialmente documentados','Pouco documentados','Nada documentado — só experiência'] },
+      { cat:'papeis', label:'Papéis e responsabilidades pouco claros',
+        text:'Cada pessoa sabe exatamente pelo que é responsável?',
+        opts:['Sim, claramente','Na maior parte do tempo','Às vezes há confusão','Frequentemente as responsabilidades se misturam'] },
+      { cat:'informacao', label:'Informação dispersa',
+        text:'Onde ficam as informações e decisões importantes da empresa?',
+        opts:['Em um sistema único e organizado','Em poucos lugares organizados','Espalhadas em vários lugares','Cada um guarda do seu jeito'] },
+      { cat:'indicadores', label:'Indicadores insuficientes',
+        text:'Com que regularidade você acompanha o desempenho da empresa?',
+        opts:['Toda semana, com indicadores claros','Todo mês','De vez em quando','Só quando aparece um problema'] },
+      { cat:'crescimento', label:'Crescimento maior que a estrutura atual',
+        text:'Nos últimos 12 meses, a estrutura da empresa acompanhou o crescimento?',
+        opts:['Sim, tranquilamente','Quase','Com dificuldade','Não — a estrutura ficou pra trás'] }
+    ];
+
+    var bands = [
+      { min:0, max:4, name:'Estrutura sob controle',
+        interpretation:'Sua empresa já opera com boa base de estrutura. A prioridade agora é manter o que funciona e evoluir com intenção.',
+        risk:'Perder o que já está estruturado por falta de manutenção',
+        next:'Uma Sessão Estratégica pode confirmar prioridades pontuais.' },
+      { min:5, max:9, name:'Atenção estrutural',
+        interpretation:'Existem sinais de que a complexidade está começando a superar a estrutura atual. Vale organizar antes que o problema cresça.',
+        risk:'A complexidade crescer mais rápido que a organização',
+        next:'Uma leitura mais aprofundada ajuda a priorizar o que estruturar primeiro.' },
+      { min:10, max:14, name:'Estruturação necessária',
+        interpretation:'A empresa já apresenta dependência real de poucas pessoas e falta de estrutura em mais de uma frente. Uma estruturação organizada tende a fazer diferença real agora.',
+        risk:'Crescer ampliando a desorganização em vez de resolvê-la',
+        next:'Uma leitura estratégica mais aprofundada é o próximo passo recomendado.' },
+      { min:15, max:18, name:'Complexidade elevada',
+        interpretation:'Seu resultado indica maior complexidade e sugere uma leitura estratégica mais aprofundada.',
+        risk:'Dependência crítica de poucas pessoas travar o crescimento',
+        next:'Uma leitura estratégica aprofundada, com prioridade, é o próximo passo recomendado.' }
+    ];
+
+    var current = 0;
+    var scores = {};
+
+    var quizState = document.getElementById('diagQuizState');
+    var resultState = document.getElementById('diagResultState');
+    var progressFill = document.getElementById('diagProgressFill');
+    var progressLabel = document.getElementById('diagProgressLabel');
+    var qTitle = document.getElementById('diagQTitle');
+    var optionsWrap = document.getElementById('diagOptions');
+
+    function renderQuestion(){
+      var q = questions[current];
+      progressFill.style.width = (((current) / questions.length) * 100) + '%';
+      progressLabel.textContent = 'Pergunta ' + (current + 1) + ' de ' + questions.length;
+      qTitle.textContent = q.text;
+      optionsWrap.innerHTML = '';
+      q.opts.forEach(function(optText, idx){
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'diag-option';
+        btn.textContent = optText;
+        btn.setAttribute('aria-label', optText);
+        btn.addEventListener('click', function(){ answer(q.cat, idx); });
+        optionsWrap.appendChild(btn);
+      });
+    }
+
+    function answer(cat, score){
+      scores[cat] = score;
+      current++;
+      if (current < questions.length){
+        renderQuestion();
+      } else {
+        progressFill.style.width = '100%';
+        showResult();
+      }
+    }
+
+    function showResult(){
+      var total = 0;
+      var sorted = [];
+      questions.forEach(function(q){
+        var s = scores[q.cat] || 0;
+        total += s;
+        sorted.push({ cat:q.cat, label:q.label, score:s });
+      });
+      sorted.sort(function(a,b){ return b.score - a.score; });
+
+      var band = bands[0];
+      for (var i = 0; i < bands.length; i++){
+        if (total >= bands[i].min && total <= bands[i].max){ band = bands[i]; break; }
+      }
+
+      document.getElementById('diagBandName').textContent = band.name;
+      document.getElementById('diagInterpretation').textContent = band.interpretation;
+      document.getElementById('diagSignal').textContent = sorted[0].label;
+      document.getElementById('diagPriority').textContent = 'Organizar: ' + sorted[1].label.charAt(0).toLowerCase() + sorted[1].label.slice(1);
+      document.getElementById('diagRisk').textContent = band.risk;
+      document.getElementById('diagNext').textContent = band.next;
+
+      quizState.style.display = 'none';
+      resultState.classList.add('active');
+      resultState.setAttribute('tabindex','-1');
+      resultState.focus();
+
+      resultState.dataset.bandName = band.name;
+    }
+
+    function restart(){
+      current = 0;
+      scores = {};
+      resultState.classList.remove('active');
+      document.getElementById('diagGateSent').style.display = 'none';
+      document.getElementById('diagGateForm').style.display = 'block';
+      quizState.style.display = 'block';
+      renderQuestion();
+    }
+
+    document.getElementById('diagRestartBtn').addEventListener('click', restart);
+
+    var gateForm = document.getElementById('diagGateForm');
+    gateForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var whatsapp = document.getElementById('diagWhatsapp').value.trim();
+      var bandName = resultState.dataset.bandName || '';
+      var msg = 'Olá. Fiz a Leitura Rápida da minha empresa no site do Programa IGED™ e o resultado foi "' + bandName + '". Gostaria de uma leitura mais completa.\n\nMeu WhatsApp: ' + whatsapp;
+      var url = 'https://wa.me/5521983461734?text=' + encodeURIComponent(msg);
+      window.open(url, '_blank');
+      gateForm.style.display = 'none';
+      document.getElementById('diagGateSent').style.display = 'block';
+    });
+
+    renderQuestion();
+  })();
 </script>
 
 </body>
