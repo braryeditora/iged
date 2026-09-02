@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Programa de Estruturação Organizacional com IGED™ — Brary Institute</title>
 <meta name="description" content="Programa de Estruturação Organizacional com IGED™: diagnóstico, decisão, implantação e acompanhamento em quatro pilares — Gestão de Negócio, Capital Intelectual, Pessoas e Liderança, Vendas e Crescimento.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Manrope:wght@700;800&family=Inter:wght@400;500;600;700&display=swap');
 
@@ -210,11 +212,13 @@
   .blob{
     position:absolute;left:-4%;top:40%;width:46%;height:30%;
     background:radial-gradient(ellipse at 35% 50%, var(--ember) 0%, rgba(232,72,31,0.65) 40%, rgba(232,72,31,0) 72%);
-    filter:blur(4px);border-radius:50%;
-    animation:drift 9s ease-in-out infinite;z-index:1;
+    filter:blur(4px) brightness(1);border-radius:50%;
+    animation:drift 9s ease-in-out infinite, glow 4.5s ease-in-out infinite;z-index:1;
   }
   @keyframes drift{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(10px,-8px) scale(1.05);}}
-  svg.net{position:relative;z-index:2;width:100%;height:100%;}
+  @keyframes glow{0%,100%{filter:blur(4px) brightness(1);}50%{filter:blur(4px) brightness(1.28);}}
+  svg.net{position:relative;z-index:2;width:100%;height:100%;animation:driftNet 22s ease-in-out infinite;transform-origin:center;}
+  @keyframes driftNet{0%,100%{transform:rotate(0deg) translate(0,0);}50%{transform:rotate(0.7deg) translate(3px,-4px);}}
   .net line{stroke:rgba(246,242,233,0.22);stroke-width:1;}
   .net circle{fill:var(--cream);}
   .net .twinkle{animation:twinkle 3.4s ease-in-out infinite;}
@@ -953,14 +957,15 @@
     <div class="footer-col">
       <span class="footer-heading">Contato</span>
       <a href="https://wa.me/5521983461734" target="_blank" rel="noopener">WhatsApp — +55 21 98346-1734</a>
-      <a href="mailto:contato@braryinstitute.com">contato@braryinstitute.com</a>
+      <a href="mailto:contato@braryeditora.com">contato@braryeditora.com</a>
     </div>
     <div class="footer-col">
       <span class="footer-heading">Ecossistema Brary</span>
-      <a href="#">Brary Editora</a>
-      <a href="#">Brary Institute</a>
-      <a href="#">Brary Journal</a>
-      <a href="#">Brary Hub</a>
+      <a href="https://www.braryeditora.com.br/" target="_blank" rel="noopener">Brary Editora</a>
+      <a href="https://brary-institute-site.vercel.app/" target="_blank" rel="noopener">Brary Institute</a>
+      <a href="https://brary-institute-site.vercel.app/journal.html" target="_blank" rel="noopener">Brary Journal</a>
+      <a href="https://www.braryeditora.com/braryon" target="_blank" rel="noopener">Brary On</a>
+      <a href="https://sociogm.web.app/" target="_blank" rel="noopener">Sócio GM</a>
     </div>
   </div>
   <div class="wrap footer-bottom">
